@@ -1,0 +1,60 @@
+﻿@model ML.DetalleVenta
+@{
+    ViewBag.Title = "GetEmpresa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Sucursales</h2>
+
+<div class="row">
+    <div class="col-sm-12">
+        <h5>Seleccione una sucursal para ver sus productos</h5>
+    </div>
+</div>
+
+<div class="row">
+    @using (Html.BeginForm("GetEmpresa", "Ventas", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="col-md-3 col-sm-6">
+            @Html.LabelFor(model =>model.Sucursal.Nombre)
+            <div class="input-group">
+                <span class="input-group-addon"><i><img src="~/Content/Icons/filtrar.svg" width="20" height="20" /></i></span>
+                @Html.DropDownListFor(model => model.Sucursal.IdSucursal, new SelectList(Model.Sucursal.Sucursales, "IdSucursal", "Nombre"), "Seleccione una sucursal", new { @class = "form-control", @id = "ddlSucursal" })
+            </div>
+            @Html.ValidationMessageFor(model => model.Sucursal.IdSucursal, null, new { @class = "text-danger" })
+        </div>
+        <div class="col-md-3">
+            <br />
+            <button class="btn btn-info" type="submit"><i class="glyphicon glyphicon-search"></i> Buscar</button>
+        </div>
+    }
+</div>
+
+<br />
+<div class="container">
+    @foreach (ML.DetalleVenta detalleVenta in Model.Producto.Productos)
+    {
+        <div class="col-md-3">
+            <div class="cards">
+                @if (detalleVenta.Producto.Imagen != null)
+                {
+                    <img src="data:imagen/jpeg;base64,@Convert.ToBase64String(detalleVenta.Producto.Imagen)" style="height:150px;width:150px;">
+                }
+                else
+                {
+                    <img src="~/Content/Images/ProductNotFound.png" style="height:150px;width:150px" />
+                }
+                <br />
+                <span class="Nombrec">@detalleVenta.Producto.Nombre</span>
+                <br />
+                <span class="Desc">@detalleVenta.Producto.Descripcion</span>
+                <div class="cost">
+                    <span class="cost">$@detalleVenta.Producto.Precio</span>
+                </div>
+                <div class="p-3 shoe text-center mt-3 cursor">
+                    <a class="text-uppercase bi bi-cart-plus-fill" href="@Url.Action("Carrito", "Ventas", new { IdProducto = detalleVenta.Producto.IdProducto })"><span class="shoe"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Agregar al carrito</span></a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7b0954eeee694456acee4bdb8fcb47f2" Name="Diagram1">
+        <EntityTypeShape EntityType="AMedinaBriveModel.Producto" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMedinaBriveModel.DetalleVenta" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="AMedinaBriveModel.MetodoPago" Width="1.5" PointX="3.375" PointY="8.125" />
+        <EntityTypeShape EntityType="AMedinaBriveModel.Sucursal" Width="1.5" PointX="0.75" PointY="8.375" />
+        <EntityTypeShape EntityType="AMedinaBriveModel.SucursalProducto" Width="1.5" PointX="6" PointY="0.875" />
+        <EntityTypeShape EntityType="AMedinaBriveModel.Usuario" Width="1.5" PointX="3.375" PointY="3.75" />
+        <EntityTypeShape EntityType="AMedinaBriveModel.Venta" Width="1.5" PointX="5.625" PointY="3.75" />
+        <AssociationConnector Association="AMedinaBriveModel.FK__DetalleVe__IdPro__1CF15040" />
+        <AssociationConnector Association="AMedinaBriveModel.FK__DetalleVe__IdSuc__1BFD2C07" />
+        <AssociationConnector Association="AMedinaBriveModel.FK__Venta__IdMetodoP__20C1E124" />
+        <AssociationConnector Association="AMedinaBriveModel.FK__SucursalP__IdPro__1920BF5C" />
+        <AssociationConnector Association="AMedinaBriveModel.FK__SucursalP__IdSuc__182C9B23" />
+        <AssociationConnector Association="AMedinaBriveModel.FK__Venta__IdUsuario__1FCDBCEB" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

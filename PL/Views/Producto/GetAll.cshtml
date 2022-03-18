@@ -1,0 +1,90 @@
+﻿@model ML.Producto
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Productos</h2>
+<div class="row">
+    <div class="col-sm-12">
+        <h5>Selecciona un producto para editarlo o en su defecto eliminarlo</h5>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @Html.ActionLink("Agregar nuevo producto", "Form", "Producto", htmlAttributes: new { @class = "btn-block btn btn-success" })
+    </div>
+</div>
+
+<br />
+<table class="table table-bordered table-responsive" id="tblProductos">
+    <thead>
+        <tr>
+            <td class="hidden">IdProducto</td>
+            <td>Nombre</td>
+            <td>Precio</td>
+            <td>Imagen</td>
+            <td>Stock</td>
+            <td>Editar</td>
+            <td>Eliminar</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (ML.Producto producto in Model.Productos)
+        {
+            <tr>
+                <td class="hidden">@producto.IdProducto</td>
+                <td>@producto.Nombre</td>
+                <td>@producto.Precio</td>
+                @if (producto.Imagen != null)
+                {
+                    <td><img src="data:image/jpeg;base64,@Convert.ToBase64String(producto.Imagen)" style="height:150px; width:150px;" /></td>
+                }
+                else
+                {
+                    <td><img src="~/Content/Images/notFound.png" style="height:150px; width:150px;" /></td>
+                }
+                @*<td>@producto.Stock</td>*@
+                <td>
+                    @if (producto.Stock >1)
+                    {
+                        <a class="btn btn-danger" href="@Url.Action("Restar","Producto",new{IdProducto = producto.IdProducto})"><img src="~/Content/Icons/menos-pequeno.svg" width="20" height="20" /></a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-danger" href="@Url.Action("Delete","Producto",new{IdProducto=producto.IdProducto})" onclick="return confirm('¿Estas seguro que deseas eliminar este producto?');"><img src="~/Content/Icons/menos-pequeno.svg" width="20" height="20" /></a>
+                    }
+                    <a style="margin-left:15px;margin-right:15px;">@producto.Stock</a>
+                    <a class="btn btn-success" href="@Url.Action("Sumar", "Producto", new { IdProducto = producto.IdProducto })"><img src="~/Content/Icons/plus-pequeno.svg" width="20" height="20" /></a>
+                </td>
+                <td><a class="btn btn-warning" href="@Url.Action("Form", "Producto", new { IdProducto = producto.IdProducto })"><img src="~/Content/Icons/lapiz.svg" width="20" height="20" /></a></td>
+                <td><a class="btn btn-danger" href="@Url.Action("Delete", "Producto", new { IdProducto = producto.IdProducto })" onclick="return confirm('Estas seguro de eliminar este producto');"><img src="~/Content/Icons/basura.svg" width="20" height="20" /></a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+@*<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+<script type="text/javascript">
+    $(function () {
+        if ($("#tblProductos tr").length > 2) {
+            $("#tblProductos tr:eq(1)").remove();
+        } else {
+            var row = $("#tblProductos tr:last-child");
+            row.find(".Edit").hide();
+            row.find(".Delete").hide();
+            row.find("span").html('&nbsp;');
+        }
+    });
+
+    function AppendRow(row, IdProducto, Stock) {
+        $(".IdProducto", row).find("span").html(IdProducto);
+        $(".Stock", row).find("span").html(Stock);
+        $(".Stock", row).find("input").val(Stock);
+        row.find(".Ed")
+    }
+</script>*@

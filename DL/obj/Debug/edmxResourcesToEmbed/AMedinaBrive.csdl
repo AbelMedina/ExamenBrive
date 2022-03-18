@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AMedinaBriveModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="IdProducto" />
+    </Key>
+    <Property Name="IdProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Stock" Type="Int32" />
+    <NavigationProperty Name="DetalleVentas" Relationship="AMedinaBriveModel.FK__DetalleVe__IdPro__1CF15040" FromRole="Producto" ToRole="DetalleVenta" />
+    <NavigationProperty Name="SucursalProductoes" Relationship="AMedinaBriveModel.FK__SucursalP__IdPro__1920BF5C" FromRole="Producto" ToRole="SucursalProducto" />
+  </EntityType>
+  <EntityContainer Name="AMedinaBriveEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Productoes" EntityType="Self.Producto" />
+    <FunctionImport Name="ProductoGetAll" ReturnType="Collection(AMedinaBriveModel.ProductoGetAll_Result)" />
+    <FunctionImport Name="ProductoDelete">
+      <Parameter Name="IdProducto" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ProductoGetById" ReturnType="Collection(AMedinaBriveModel.ProductoGetById_Result)">
+      <Parameter Name="IdProducto" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ProductoUpdate">
+      <Parameter Name="IdProducto" Mode="In" Type="Int32" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="Precio" Mode="In" Type="Decimal" />
+      <Parameter Name="Imagen" Mode="In" Type="Binary" />
+      <Parameter Name="Stock" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="DetalleVentas" EntityType="AMedinaBriveModel.DetalleVenta" />
+    <EntitySet Name="MetodoPagoes" EntityType="AMedinaBriveModel.MetodoPago" />
+    <EntitySet Name="Sucursals" EntityType="AMedinaBriveModel.Sucursal" />
+    <EntitySet Name="SucursalProductoes" EntityType="AMedinaBriveModel.SucursalProducto" />
+    <EntitySet Name="Usuarios" EntityType="AMedinaBriveModel.Usuario" />
+    <EntitySet Name="Ventas" EntityType="AMedinaBriveModel.Venta" />
+    <AssociationSet Name="FK__DetalleVe__IdPro__1CF15040" Association="AMedinaBriveModel.FK__DetalleVe__IdPro__1CF15040">
+      <End Role="Producto" EntitySet="Productoes" />
+      <End Role="DetalleVenta" EntitySet="DetalleVentas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DetalleVe__IdSuc__1BFD2C07" Association="AMedinaBriveModel.FK__DetalleVe__IdSuc__1BFD2C07">
+      <End Role="Sucursal" EntitySet="Sucursals" />
+      <End Role="DetalleVenta" EntitySet="DetalleVentas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Venta__IdMetodoP__20C1E124" Association="AMedinaBriveModel.FK__Venta__IdMetodoP__20C1E124">
+      <End Role="MetodoPago" EntitySet="MetodoPagoes" />
+      <End Role="Venta" EntitySet="Ventas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SucursalP__IdPro__1920BF5C" Association="AMedinaBriveModel.FK__SucursalP__IdPro__1920BF5C">
+      <End Role="Producto" EntitySet="Productoes" />
+      <End Role="SucursalProducto" EntitySet="SucursalProductoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SucursalP__IdSuc__182C9B23" Association="AMedinaBriveModel.FK__SucursalP__IdSuc__182C9B23">
+      <End Role="Sucursal" EntitySet="Sucursals" />
+      <End Role="SucursalProducto" EntitySet="SucursalProductoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Venta__IdUsuario__1FCDBCEB" Association="AMedinaBriveModel.FK__Venta__IdUsuario__1FCDBCEB">
+      <End Role="Usuario" EntitySet="Usuarios" />
+      <End Role="Venta" EntitySet="Ventas" />
+    </AssociationSet>
+    <FunctionImport Name="SucursalProductoAdd">
+      <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
+      <Parameter Name="IdProducto" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SucursalGetAll" ReturnType="Collection(AMedinaBriveModel.SucursalGetAll_Result)" />
+    <FunctionImport Name="ProductoAdd">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="Precio" Mode="In" Type="Decimal" />
+      <Parameter Name="Imagen" Mode="In" Type="Binary" />
+      <Parameter Name="Stock" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ProductosGetAsignadosByIdSucursal" ReturnType="Collection(AMedinaBriveModel.ProductosGetAsignadosByIdSucursal_Result)">
+      <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SucursalGetById" ReturnType="Collection(AMedinaBriveModel.SucursalGetById_Result)">
+      <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ProductosGetNoAsignadosByIdSucursal" ReturnType="Collection(AMedinaBriveModel.ProductosGetNoAsignadosByIdSucursal_Result)">
+      <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SucursalProductoDelete">
+      <Parameter Name="IdSucursalProducto" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="ProductoGetAll_Result">
+    <Property Type="Int32" Name="IdProducto" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="Precio" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Binary" Name="Imagen" Nullable="true" />
+    <Property Type="Int32" Name="Stock" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ProductoGetById_Result">
+    <Property Type="Int32" Name="IdProducto" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="Precio" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Binary" Name="Imagen" Nullable="true" />
+    <Property Type="Int32" Name="Stock" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="DetalleVenta">
+    <Key>
+      <PropertyRef Name="IdDetalleProducto" />
+    </Key>
+    <Property Name="IdDetalleProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdSucursal" Type="Int32" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="IdProducto" Type="Int32" />
+    <NavigationProperty Name="Producto" Relationship="AMedinaBriveModel.FK__DetalleVe__IdPro__1CF15040" FromRole="DetalleVenta" ToRole="Producto" />
+    <NavigationProperty Name="Sucursal" Relationship="AMedinaBriveModel.FK__DetalleVe__IdSuc__1BFD2C07" FromRole="DetalleVenta" ToRole="Sucursal" />
+  </EntityType>
+  <EntityType Name="MetodoPago">
+    <Key>
+      <PropertyRef Name="IdMetodoPago" />
+    </Key>
+    <Property Name="IdMetodoPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Metodo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Ventas" Relationship="AMedinaBriveModel.FK__Venta__IdMetodoP__20C1E124" FromRole="MetodoPago" ToRole="Venta" />
+  </EntityType>
+  <EntityType Name="Sucursal">
+    <Key>
+      <PropertyRef Name="IdSucursal" />
+    </Key>
+    <Property Name="IdSucursal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DetalleVentas" Relationship="AMedinaBriveModel.FK__DetalleVe__IdSuc__1BFD2C07" FromRole="Sucursal" ToRole="DetalleVenta" />
+    <NavigationProperty Name="SucursalProductoes" Relationship="AMedinaBriveModel.FK__SucursalP__IdSuc__182C9B23" FromRole="Sucursal" ToRole="SucursalProducto" />
+  </EntityType>
+  <EntityType Name="SucursalProducto">
+    <Key>
+      <PropertyRef Name="IdSucursalProducto" />
+    </Key>
+    <Property Name="IdSucursalProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdSucursal" Type="Int32" />
+    <Property Name="IdProducto" Type="Int32" />
+    <NavigationProperty Name="Producto" Relationship="AMedinaBriveModel.FK__SucursalP__IdPro__1920BF5C" FromRole="SucursalProducto" ToRole="Producto" />
+    <NavigationProperty Name="Sucursal" Relationship="AMedinaBriveModel.FK__SucursalP__IdSuc__182C9B23" FromRole="SucursalProducto" ToRole="Sucursal" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ApellidoPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ApellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Ventas" Relationship="AMedinaBriveModel.FK__Venta__IdUsuario__1FCDBCEB" FromRole="Usuario" ToRole="Venta" />
+  </EntityType>
+  <EntityType Name="Venta">
+    <Key>
+      <PropertyRef Name="IdVenta" />
+    </Key>
+    <Property Name="IdVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUsuario" Type="Int32" />
+    <Property Name="Total" Type="Int32" />
+    <Property Name="IdMetodoPago" Type="Int32" />
+    <Property Name="FechaVenta" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="MetodoPago" Relationship="AMedinaBriveModel.FK__Venta__IdMetodoP__20C1E124" FromRole="Venta" ToRole="MetodoPago" />
+    <NavigationProperty Name="Usuario" Relationship="AMedinaBriveModel.FK__Venta__IdUsuario__1FCDBCEB" FromRole="Venta" ToRole="Usuario" />
+  </EntityType>
+  <Association Name="FK__DetalleVe__IdPro__1CF15040">
+    <End Type="AMedinaBriveModel.Producto" Role="Producto" Multiplicity="0..1" />
+    <End Type="AMedinaBriveModel.DetalleVenta" Role="DetalleVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="IdProducto" />
+      </Principal>
+      <Dependent Role="DetalleVenta">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DetalleVe__IdSuc__1BFD2C07">
+    <End Type="AMedinaBriveModel.Sucursal" Role="Sucursal" Multiplicity="0..1" />
+    <End Type="AMedinaBriveModel.DetalleVenta" Role="DetalleVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sucursal">
+        <PropertyRef Name="IdSucursal" />
+      </Principal>
+      <Dependent Role="DetalleVenta">
+        <PropertyRef Name="IdSucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Venta__IdMetodoP__20C1E124">
+    <End Type="AMedinaBriveModel.MetodoPago" Role="MetodoPago" Multiplicity="0..1" />
+    <End Type="AMedinaBriveModel.Venta" Role="Venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MetodoPago">
+        <PropertyRef Name="IdMetodoPago" />
+      </Principal>
+      <Dependent Role="Venta">
+        <PropertyRef Name="IdMetodoPago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SucursalP__IdPro__1920BF5C">
+    <End Type="AMedinaBriveModel.Producto" Role="Producto" Multiplicity="0..1" />
+    <End Type="AMedinaBriveModel.SucursalProducto" Role="SucursalProducto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="IdProducto" />
+      </Principal>
+      <Dependent Role="SucursalProducto">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SucursalP__IdSuc__182C9B23">
+    <End Type="AMedinaBriveModel.Sucursal" Role="Sucursal" Multiplicity="0..1" />
+    <End Type="AMedinaBriveModel.SucursalProducto" Role="SucursalProducto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sucursal">
+        <PropertyRef Name="IdSucursal" />
+      </Principal>
+      <Dependent Role="SucursalProducto">
+        <PropertyRef Name="IdSucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Venta__IdUsuario__1FCDBCEB">
+    <End Type="AMedinaBriveModel.Usuario" Role="Usuario" Multiplicity="0..1" />
+    <End Type="AMedinaBriveModel.Venta" Role="Venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Venta">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="SucursalGetAll_Result">
+    <Property Type="Int32" Name="IdSucursal" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Direccion" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="ProductosGetAsignadosByIdSucursal_Result">
+    <Property Type="Int32" Name="IdSucursalProducto" Nullable="false" />
+    <Property Type="Int32" Name="IdSucursal" Nullable="false" />
+    <Property Type="String" Name="SucursalNombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Direccion" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="IdProducto" Nullable="false" />
+    <Property Type="String" Name="ProductoNombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="Precio" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Binary" Name="Imagen" Nullable="true" />
+    <Property Type="Int32" Name="Stock" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SucursalGetById_Result">
+    <Property Type="Int32" Name="IdSucursal" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Direccion" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="ProductosGetNoAsignadosByIdSucursal_Result">
+    <Property Type="Int32" Name="IdProducto" Nullable="false" />
+    <Property Type="String" Name="ProductoNombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="Precio" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Binary" Name="Imagen" Nullable="true" />
+    <Property Type="Int32" Name="Stock" Nullable="true" />
+  </ComplexType>
+</Schema>

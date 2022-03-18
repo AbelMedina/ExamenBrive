@@ -1,0 +1,42 @@
+﻿@model ML.SucursalProducto
+@{
+    ViewBag.Title = "SucursalGetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Sucursales</h2>
+
+<div class="row">
+    <div class="col-sm-12">
+        <h5>Seleccione una sucursal de la siguiente lista para ver sus productos</h5>
+    </div>
+</div>
+
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <table class="table table-bordered table-responsive">
+            <thead>
+                <tr>
+                    <td>Seleccionar</td>
+                    <td class="hidden">IdSucursal</td>
+                    <td>Nombre</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (ML.Sucursal sucursal in Model.Sucursal.Sucursales)
+                {
+                    <tr>
+                        <td>
+                            <a class="btn btn-info" href="@Url.Action("GetProductosByIdSucursal","SucursalProducto",sucursal)"><img src="~/Content/Icons/descargar.svg" width="20" height="20" /></a>
+                        </td>
+                        <td class="hidden">@sucursal.IdSucursal</td>
+                        <td>@sucursal.Nombre</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+

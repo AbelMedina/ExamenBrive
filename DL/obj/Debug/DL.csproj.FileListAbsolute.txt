@@ -1,0 +1,10 @@
+C:\Users\ALIEN 20\Documents\AbelMedinaRivera\AMedinaBrive\DL\bin\Debug\DL.dll.config
+C:\Users\ALIEN 20\Documents\AbelMedinaRivera\AMedinaBrive\DL\bin\Debug\DL.dll
+C:\Users\ALIEN 20\Documents\AbelMedinaRivera\AMedinaBrive\DL\bin\Debug\DL.pdb
+C:\Users\ALIEN 20\Documents\AbelMedinaRivera\AMedinaBrive\DL\bin\Debug\EntityFramework.dll
+C:\Users\ALIEN 20\Documents\AbelMedinaRivera\AMedinaBrive\DL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ALIEN 20\Documents\AbelMedinaRivera\AMedinaBrive\DL\bin\Debug\EntityFramework.xml
+C:\Users\ALIEN 20\Documents\AbelMedinaRivera\AMedinaBrive\DL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ALIEN 20\Documents\AbelMedinaRivera\AMedinaBrive\DL\obj\Debug\DL.csprojResolveAssemblyReference.cache
+C:\Users\ALIEN 20\Documents\AbelMedinaRivera\AMedinaBrive\DL\obj\Debug\DL.dll
+C:\Users\ALIEN 20\Documents\AbelMedinaRivera\AMedinaBrive\DL\obj\Debug\DL.pdb

@@ -1,0 +1,93 @@
+﻿@model ML.SucursalProducto
+@{
+    ViewBag.Title = "GetProductosByIdSucursal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Productos en Sucursal</h2>
+<div class="row">
+    <div class="col-sm-12">
+        <h5>Lista de productos en sucursal</h5>
+        <hr />
+    </div>
+</div>
+
+<div class="row">
+    @using (Html.BeginForm("GetProductosByIdSucursal", "SucursalProducto", Model.Sucursal.IdSucursal, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="form-horizontal">
+            <div class="row">
+                        <div class="col-md-12">
+                            <div class="card gr-2">
+                                <div class="txt">
+                                    <h1>@Model.Sucursal.Nombre</h1>
+                                    <p>@Model.Sucursal.Direccion</p>
+                                </div>
+                                <a href="@Url.Action("GetProductosNoByIdSucursal","SucursalProducto",Model.Sucursal)">Agregar mas productos</a>
+                                <div class="ico-card">
+                                    <i class="fa fa-codepen"></i>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                   
+            </div>
+            @*<div style="float:right">
+                <a class="btn btn-success" href="@Url.Action("GetProductosNoByIdSucursal","SucursalProducto",Model.Sucursal)">+</a>
+            </div>*@
+            <br />
+            <div class="row" style="padding-top:30px">
+                <div class="col-md-12">
+                    @if (Model.SucursalProductos.Count > 0)
+                    {
+                        <table class="table table-bordered table-responsive">
+                            <thead>
+                                <tr>
+                                    <td>Eliminar</td>
+                                    <td class="hidden">IdSucursalProducto</td>
+                                    <td class="hidden">IdSucursal</td>
+                                    <td>Nombre</td>
+                                    <td>Descripción</td>
+                                    <td>Precio</td>
+                                    <td>Stock</td>
+                                    <td>Imagen</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (ML.SucursalProducto sucursalProducto in Model.SucursalProductos)
+                                {
+                                    <tr>
+                                        <td><a class="btn btn-danger" href="@Url.Action("Delete", "SucursalProducto", new { IdSucursalProducto = sucursalProducto.IdSucursalProducto, IdSucursal = Model.Sucursal.IdSucursal })" onclick="return confirm('¿Estas seguro de eliminar este registro');"><img src="~/Content/Icons/basura.svg" width="20" height="20" /></a></td>
+                                        <td class="hidden">@sucursalProducto.IdSucursalProducto</td>
+                                        <td class="hidden">@sucursalProducto.Sucursal.IdSucursal</td>
+                                        <td>@sucursalProducto.Producto.Nombre</td>
+                                        <td>@sucursalProducto.Producto.Descripcion</td>
+                                        <td>@sucursalProducto.Producto.Precio</td>
+                                        <td>@sucursalProducto.Producto.Stock</td>
+                                        @if (sucursalProducto.Producto.Imagen != null)
+                                        {
+                                            <td><img src="data:imagen/jpeg;base64,@Convert.ToBase64String(sucursalProducto.Producto.Imagen)" style="height:150px;width:150px;"></td>
+                                        }
+                                        else
+                                        {
+                                            <td><img src="~/Content/Images/ProductNotFound.png" style="height:150px;width:150px" /></td>
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <div class="alert alert-warning" role="alert">
+                            La sucursal no tiene productos
+                        </div>
+                    }
+                    <div style="float:right">
+                        <a class="btn btn-danger" href="@Url.Action("SucursalGetAll","SucursalProducto")">Regresar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>ACME</h1>
+    <p class="lead">Sitio web encargado de gestionar los productos y las sucursales de la compañia.</p>
+
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Productos</h2>
+        <p>
+            En este apartado usted podra registrar nuevos productos, hacer modificaciones en los mismos o en caso de que lo requiera hacer la eliminacion de alguno de ellos.
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("GetAll", "Producto")">Ir a</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Asignar productos</h2>
+        <p>En este apartado usted podra asignar productos a las sucursales que sean de su deseo.</p>
+        <p><a class="btn btn-default" href="@Url.Action("SucursalGetAll","SucursalProducto")">Ir a</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Ventas</h2>
+        <p>En este apartado usted podra acceder a los productos con los que cuentan las sucursales y podra efectuar una compra.</p>
+        <p><a class="btn btn-default" href="@Url.Action("GetEmpresa", "Ventas")">Ir a</a></p>
+    </div>
+</div>

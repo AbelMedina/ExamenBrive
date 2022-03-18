@@ -1,0 +1,14 @@
+C:\Users\ALIEN 20\Documents\AbelMedinaRivera\AMedinaBrive\BL\bin\Debug\BL.dll.config
+C:\Users\ALIEN 20\Documents\AbelMedinaRivera\AMedinaBrive\BL\bin\Debug\BL.dll
+C:\Users\ALIEN 20\Documents\AbelMedinaRivera\AMedinaBrive\BL\bin\Debug\BL.pdb
+C:\Users\ALIEN 20\Documents\AbelMedinaRivera\AMedinaBrive\BL\bin\Debug\DL.dll
+C:\Users\ALIEN 20\Documents\AbelMedinaRivera\AMedinaBrive\BL\bin\Debug\EntityFramework.dll
+C:\Users\ALIEN 20\Documents\AbelMedinaRivera\AMedinaBrive\BL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ALIEN 20\Documents\AbelMedinaRivera\AMedinaBrive\BL\bin\Debug\ML.dll
+C:\Users\ALIEN 20\Documents\AbelMedinaRivera\AMedinaBrive\BL\bin\Debug\DL.pdb
+C:\Users\ALIEN 20\Documents\AbelMedinaRivera\AMedinaBrive\BL\bin\Debug\ML.pdb
+C:\Users\ALIEN 20\Documents\AbelMedinaRivera\AMedinaBrive\BL\bin\Debug\EntityFramework.xml
+C:\Users\ALIEN 20\Documents\AbelMedinaRivera\AMedinaBrive\BL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ALIEN 20\Documents\AbelMedinaRivera\AMedinaBrive\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
+C:\Users\ALIEN 20\Documents\AbelMedinaRivera\AMedinaBrive\BL\obj\Debug\BL.dll
+C:\Users\ALIEN 20\Documents\AbelMedinaRivera\AMedinaBrive\BL\obj\Debug\BL.pdb
